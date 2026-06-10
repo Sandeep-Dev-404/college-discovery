@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 College Discovery Platform
 
-## Getting Started
+A production-grade MVP for college discovery and decision-making.
 
-First, run the development server:
+**Role:** Full Stack Engineer  
+**Track:** Track B — College Discovery Platform
+
+## 🔗 Links
+
+- **Live URL:** https://college-discovery-gamma-ivory.vercel.app/
+- **Loom Video:** [your-loom-url-here]
+
+## ✨ Features Implemented
+
+1. **College Listing + Search** — Search by name, city, state with filters and pagination
+2. **College Detail Page** — Overview, courses, placements, reviews with tab navigation
+3. **Compare Colleges** — Side-by-side comparison of 2-3 colleges
+4. **Authentication + Saved Colleges** — Signup/Login with JWT, save favorite colleges
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | Next.js, React, TypeScript, TailwindCSS |
+| Backend | Next.js API Routes |
+| Database | PostgreSQL (Neon) |
+| ORM | Prisma |
+| Auth | JWT (jose) + bcryptjs |
+| Validation | Zod |
+| Deployment | Vercel |
+
+## 📁 Project Structure
+app/
+├── api/
+│ ├── colleges/ # College listing and detail APIs
+│ ├── auth/ # Login, Signup, Logout, Me APIs
+│ └── saved/ # Save/unsave colleges API
+├── colleges/ # College listing and detail pages
+├── compare/ # Compare colleges page
+├── saved/ # Saved colleges page
+├── login/ # Login page
+├── signup/ # Signup page
+└── page.tsx # Home page
+
+components/
+├── Navbar.tsx # Responsive navbar with mobile menu
+├── CollegeCard.tsx # Reusable college card component
+└── SkeletonCard.tsx # Loading skeleton component
+
+lib/
+├── prisma.ts # Prisma client singleton
+└── auth.ts # JWT token helpers
+
+
+## 🏗️ Architecture Decisions
+
+1. **Next.js App Router** — Used for both frontend pages and backend API routes in a single project
+2. **Prisma ORM** — Type-safe database queries with PostgreSQL
+3. **JWT in HTTP-only cookies** — Secure authentication without exposing tokens to JavaScript
+4. **Zod validation** — Server-side input validation for all API endpoints
+5. **Client-side state management** — Used React useState for search, filters, compare list
+6. **Responsive design** — Mobile-first approach with TailwindCSS breakpoints
+
+## 🔒 Edge Cases Handled
+
+- Invalid college ID returns 404
+- Duplicate saved colleges prevented using upsert
+- Unauthorized users cannot save colleges (returns 401)
+- Invalid signup/login input validated with Zod
+- Empty search results show friendly empty state
+- API errors show error state with retry button
+- Pagination limit capped at API level
+- All data comes from database, not hardcoded
+
+## 🚀 Run Locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/Sandeep-Dev-404/college-discovery.git
+cd college-discovery
+npm install

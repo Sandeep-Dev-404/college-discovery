@@ -3,11 +3,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
+import { toast } from "@/lib/toast";
 
 export default function Navbar() {
   const router = useRouter();
-
   const [user, setUser] = useState<{ name: string; email: string } | null>(
     null
   );
@@ -37,45 +36,40 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-white shadow-sm">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        {/* Logo */}
-        <Link href="/" className="text-xl font-bold text-blue-600">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/85 shadow-xl shadow-slate-950/20 backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-sm text-slate-100">
+        <Link href="/" className="text-xl font-semibold tracking-tight text-white">
           🎓 CollegeDiscovery
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden items-center gap-5 text-sm md:flex">
+        <div className="hidden items-center gap-4 md:flex">
           <Link
             href="/colleges"
-            className="rounded-lg px-3 py-2 transition hover:bg-blue-50 hover:text-blue-600"
+            className="rounded-full px-4 py-2 transition hover:bg-white/10"
           >
             Colleges
           </Link>
-
           <Link
             href="/compare"
-            className="rounded-lg px-3 py-2 transition hover:bg-blue-50 hover:text-blue-600"
+            className="rounded-full px-4 py-2 transition hover:bg-white/10"
           >
             Compare
           </Link>
-
           <Link
             href="/saved"
-            className="rounded-lg px-3 py-2 transition hover:bg-blue-50 hover:text-blue-600"
+            className="rounded-full px-4 py-2 transition hover:bg-white/10"
           >
             Saved
           </Link>
 
           {user ? (
             <div className="flex items-center gap-3">
-              <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
+              <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white shadow-sm shadow-slate-950/20">
                 {user.name}
               </span>
-
               <button
                 onClick={handleLogout}
-                className="rounded-lg border border-red-200 px-3 py-2 text-red-600 transition hover:bg-red-50"
+                className="rounded-full border border-red-400/20 px-4 py-2 text-sm text-red-300 transition hover:bg-red-500/10"
               >
                 Logout
               </button>
@@ -84,14 +78,13 @@ export default function Navbar() {
             <div className="flex gap-2">
               <Link
                 href="/login"
-                className="rounded-lg border px-3 py-2 transition hover:bg-gray-50"
+                className="rounded-full border border-white/10 px-4 py-2 text-white transition hover:bg-white/10"
               >
                 Login
               </Link>
-
               <Link
                 href="/signup"
-                className="rounded-lg bg-blue-600 px-3 py-2 text-white transition hover:bg-blue-700"
+                className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-4 py-2 text-white transition hover:from-sky-400 hover:to-indigo-400"
               >
                 Signup
               </Link>
@@ -99,54 +92,51 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="rounded-lg p-2 hover:bg-gray-100 md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden"
+          aria-label="Toggle menu"
         >
           {menuOpen ? (
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
         </button>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
       {menuOpen && (
-        <div className="border-t bg-white px-4 py-4 md:hidden">
+        <div className="border-t border-white/10 bg-slate-950/95 px-4 py-4 text-slate-100 md:hidden">
           <div className="flex flex-col gap-3">
             <Link
               href="/colleges"
               onClick={() => setMenuOpen(false)}
-              className="rounded-lg px-3 py-2 hover:bg-blue-50"
+              className="rounded-2xl px-4 py-3 transition hover:bg-white/10"
             >
               Colleges
             </Link>
-
             <Link
               href="/compare"
               onClick={() => setMenuOpen(false)}
-              className="rounded-lg px-3 py-2 hover:bg-blue-50"
+              className="rounded-2xl px-4 py-3 transition hover:bg-white/10"
             >
               Compare
             </Link>
-
             <Link
               href="/saved"
               onClick={() => setMenuOpen(false)}
-              className="rounded-lg px-3 py-2 hover:bg-blue-50"
+              className="rounded-2xl px-4 py-3 transition hover:bg-white/10"
             >
               Saved
             </Link>
 
             {user ? (
               <>
-                <p className="px-3 text-sm text-gray-500">
+                <p className="rounded-2xl bg-white/5 px-4 py-3 text-sm text-slate-300">
                   Logged in as {user.name}
                 </p>
                 <button
@@ -154,7 +144,7 @@ export default function Navbar() {
                     handleLogout();
                     setMenuOpen(false);
                   }}
-                  className="rounded-lg border border-red-200 px-3 py-2 text-left text-red-600"
+                  className="rounded-2xl border border-red-500/20 px-4 py-3 text-left text-red-300 transition hover:bg-red-500/10"
                 >
                   Logout
                 </button>
@@ -164,15 +154,14 @@ export default function Navbar() {
                 <Link
                   href="/login"
                   onClick={() => setMenuOpen(false)}
-                  className="rounded-lg border px-3 py-2 text-center"
+                  className="rounded-2xl border border-white/10 px-4 py-3 text-center text-white transition hover:bg-white/10"
                 >
                   Login
                 </Link>
-
                 <Link
                   href="/signup"
                   onClick={() => setMenuOpen(false)}
-                  className="rounded-lg bg-blue-600 px-3 py-2 text-center text-white"
+                  className="rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 px-4 py-3 text-center text-white transition hover:from-sky-400 hover:to-indigo-400"
                 >
                   Signup
                 </Link>

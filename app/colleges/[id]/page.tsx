@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { College } from "@/types";
 import Link from "next/link";
-import toast from "react-hot-toast";
+import { toast } from "@/lib/toast";
 
 export default function CollegeDetailPage() {
   const params = useParams();
@@ -112,7 +112,7 @@ export default function CollegeDetailPage() {
           <div className="flex gap-2">
             <button
               onClick={saveCollege}
-              className="rounded-lg border px-4 py-2 text-sm transition hover:bg-gray-50"
+              className="rounded-lg border px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-50"
             >
               ❤️ Save
             </button>

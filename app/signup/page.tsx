@@ -43,53 +43,78 @@ export default function SignupPage() {
   }
 
   return (
-    <main className="mx-auto max-w-md px-4 py-12">
+    <main className="mx-auto max-w-xl px-4 py-16">
       <form
         onSubmit={handleSignup}
-        className="rounded-xl bg-white p-6 shadow-sm"
+        className="rounded-4xl border border-white/10 bg-white/5 p-10 shadow-2xl shadow-slate-950/10 backdrop-blur-xl"
       >
-        <h1 className="text-2xl font-bold">Create Account</h1>
-        <p className="mt-1 text-sm text-gray-500">
-          Join CollegeDiscovery to save and compare colleges.
-        </p>
+        <div className="mb-8 text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-300/80">
+            Join CollegeDiscovery
+          </p>
+          <h1 className="mt-4 text-4xl font-semibold text-white">Create your account</h1>
+          <p className="mt-3 text-slate-400">
+            Save colleges, track favorites, and compare your top options.
+          </p>
+        </div>
 
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Full Name"
-          required
-          className="mt-5 w-full rounded-lg border px-3 py-3 transition focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
-        />
+        <div className="space-y-4">
+          <div>
+            <label htmlFor="name" className="text-sm font-medium text-slate-200">
+              Full Name
+            </label>
+            <input
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Full Name"
+              required
+              className="mt-2 w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-500/20"
+            />
+          </div>
 
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          type="email"
-          required
-          className="mt-3 w-full rounded-lg border px-3 py-3 transition focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
-        />
+          <div>
+            <label htmlFor="email" className="text-sm font-medium text-slate-200">
+              Email
+            </label>
+            <input
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              type="email"
+              required
+              className="mt-2 w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-500/20"
+            />
+          </div>
 
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password (min 6 characters)"
-          type="password"
-          required
-          className="mt-3 w-full rounded-lg border px-3 py-3 transition focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
-        />
+          <div>
+            <label htmlFor="password" className="text-sm font-medium text-slate-200">
+              Password
+            </label>
+            <input
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password (min 6 characters)"
+              type="password"
+              required
+              className="mt-2 w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-500/20"
+            />
+          </div>
+        </div>
 
         <button
           disabled={loading}
-          className="mt-5 w-full rounded-lg bg-blue-600 px-4 py-3 font-medium text-white transition hover:bg-blue-700 disabled:opacity-50"
+          className="mt-8 w-full rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white transition hover:from-sky-400 hover:to-indigo-400 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {loading ? "Creating account..." : "Create Account"}
         </button>
 
-        <p className="mt-4 text-center text-sm text-gray-600">
-          Already have account?{" "}
-          <Link href="/login" className="text-blue-600 hover:underline">
-            Login
+        <p className="mt-6 text-center text-sm text-slate-400">
+          Already have an account?{' '}
+          <Link href="/login" className="font-semibold text-sky-300 hover:text-sky-200">
+            Log in
           </Link>
         </p>
       </form>

@@ -120,7 +120,7 @@ export default function CollegesPage() {
 
         <button
           onClick={applyFilters}
-          className="rounded-full bg-linear-to-r from-sky-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white transition hover:from-sky-400 hover:to-indigo-400"
+          className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white transition hover:from-sky-400 hover:to-indigo-400"
         >
           Search
         </button>
@@ -168,7 +168,7 @@ export default function CollegesPage() {
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
           <button
             onClick={applyFilters}
-            className="rounded-full bg-linear-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white transition hover:from-sky-400 hover:to-indigo-400"
+            className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white transition hover:from-sky-400 hover:to-indigo-400"
           >
             Apply Filters
           </button>
@@ -204,7 +204,7 @@ export default function CollegesPage() {
             ))}
             <Link
               href={`/compare?ids=${compareList.map((c) => c.id).join(",")}`}
-              className="ml-auto rounded-full bg-linear-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white transition hover:from-sky-400 hover:to-indigo-400"
+              className="ml-auto rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white transition hover:from-sky-400 hover:to-indigo-400"
             >
               Compare Now →
             </Link>
@@ -264,7 +264,7 @@ export default function CollegesPage() {
                 onClick={() => setPage(p)}
                 className={`h-10 w-10 rounded-full text-sm font-semibold transition ${
                   p === page
-                    ? "bg-linear-to-r from-sky-500 to-indigo-500 text-white"
+                    ? "bg-gradient-to-r from-sky-500 to-indigo-500 text-white"
                     : "border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"
                 }`}
               >

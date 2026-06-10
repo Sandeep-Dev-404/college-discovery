@@ -8,7 +8,7 @@ A production-grade MVP for college discovery and decision-making.
 ## 🔗 Links
 
 - **Live URL:** https://college-discovery-gamma-ivory.vercel.app/
-- **Loom Video:** [your-loom-url-here]
+
 
 ## ✨ Features Implemented
 
